@@ -1,0 +1,28 @@
+{% extends "recipes/base.html" %}
+<!-- -->
+{% block content %}
+<h1>Recipes:</h1>
+{% for recipe in recipes %}
+<h1>{{recipe.title}}</h1>
+<p>{{recipe.cookbook}}</p>
+<ul>
+    {% for ingredient in recipe.ingredients%}
+    {% for key, value in ingredient.items %}
+    <li>{{value}} {{key}}</li>
+    {% endfor %}
+    {% endfor %}
+</ul>
+<h5>{{recipe.instructions}}</h5>
+<hr />
+{% endfor %}
+
+<h1>Ingredients:</h1>
+
+<ul>
+    {% for key, value in ingredient_list %}
+    <li>{{key}} x {{value}}</li>
+    {% endfor %}
+</ul>
+
+<!-- -->
+{% endblock content %}
