@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +11,7 @@
     {% else %}
     <title>Django Recipes</title>
     {% endif %}
+    <link rel="stylesheet" href="{% static 'recipes/style.css' %}">
   </head>
   <body>
     {% block content %} {% endblock %}

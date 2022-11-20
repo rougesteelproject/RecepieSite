@@ -18,8 +18,9 @@ from . import models
 def home(request):
     ingredient_counter = Counter()
 
-    recipes = models.Recipe.objects.all()
-    #TODO get only 14 recipes, where they're not stale
+    recipes = models.Recipe.objects.all()[:14]
+    #[:14] get only 14 recipes
+    # TODO where they're not stale (filter())
     #TODO stale-ness affected by repetition_multiplier
 
     #TODO an accept recipe button that updates last_used
