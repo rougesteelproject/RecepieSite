@@ -5,11 +5,11 @@ from . import models
 from django.db.models import F, Max
 
 #You can't import to keep, but you can copy paste.
-# TODO a javascript copy to clipboard button
+# TODO stretch goal a javascript copy to clipboard button
 
-#TODO replace Counter with the solution here: https://github.com/python/typeshed/issues/3438 and have 1.5 cups instead of 3x half-cups
+#TODO stretch goal replace Counter with the solution here: https://github.com/python/typeshed/issues/3438 and have 1.5 cups instead of 3x half-cups
 
-#TODO have recepies be links to full instructions
+#TODO stretch goal have recepies be links to full instructions
 
 #TODO stretch goal fill in recipes with new ones from another site
 #   "New List" adds this recipe to the database
@@ -53,10 +53,13 @@ def requeue(recipes):
 
 # Create your views here.
 def home(request):
+
     ingredient_counter = Counter()
 
     recipes = models.Recipe.objects.filter(queue_value = 0)[:14]
+    #TODO put in up to 14 recipes
     #[:14] get only 14 recipes
+    #TODO check if this will bug when more than 14 have a q_v of 0
     #TODO if you can't get 14 recipes len(recipes) < 14, recipes= recipes + models.Recipe.objects.all()[:(14 - len(recipes))]
     #order by the queue value ascending
 
@@ -77,8 +80,6 @@ def home(request):
         #then reduce each recipe's queue_value by 1
         print('update')
         models.Recipe.objects.update(queue_value = F('queue_value') - 1)
-
-        #TODO rename save to "new list"
 
         context = {
         'recipes': recipes,
