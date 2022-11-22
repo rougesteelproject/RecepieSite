@@ -9,8 +9,8 @@ class Recipe(models.Model):
     instructions = models.TextField()
     ingredients = models.JSONField()
 
-    preference_repetition_multiplier = models.FloatField()
-    last_used = models.DateTimeField(auto_now=True)
+    preference_priority = models.IntegerField(default = 3)
+    queue_value = models.IntegerField(default = 0)
 
     def __str__(self):
         return self.title

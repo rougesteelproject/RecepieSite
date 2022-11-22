@@ -20,7 +20,7 @@
     {% endfor %}
 </div>
 
-<form>
+<form action="" method="POST">{% csrf_token %}
     <input type="submit" name="Save" value="Save" />
 </form>
 
