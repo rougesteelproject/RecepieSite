@@ -28,9 +28,15 @@ def requeue(recipes):
 
         if max_queue == 0:
             max_queue = 2
-
+        
+        print(recipe.title)
+        print(recipe.preference_priority)
+        
         if recipe.preference_priority == 5:
             recipe.queue_value = 0
+            print(recipe.title)
+            print(recipe.queue_value)
+
             #set to 0
         if recipe.preference_priority == 4:
         #love, quarter of the list = 4:
@@ -47,8 +53,7 @@ def requeue(recipes):
             recipe.queue_value= max_queue+ 1
         #hate/never = 0
         if recipe.preference_priority == 0: 
-            recipe.queue_value  -=1
-            #TODO set to -1?
+            recipe.queue_value= max_queue+ 1
         recipe.save()
 
 # Create your views here.
@@ -56,20 +61,19 @@ def home(request):
 
     ingredient_counter = Counter()
 
-    recipes = models.Recipe.objects.filter(queue_value = 0)[:14]
-    #TODO put in up to 14 recipes
+    recipes = models.Recipe.objects.filter(queue_value__lte = 0)[:14]
+    # '__lte' = less than or equal to
+    #TODO filter where pref_prio is not zero
     #[:14] get only 14 recipes
-    #TODO check if this will bug when more than 14 have a q_v of 0
     #TODO if you can't get 14 recipes len(recipes) < 14, recipes= recipes + models.Recipe.objects.all()[:(14 - len(recipes))]
     #order by the queue value ascending
 
-    #TODO a sllider form for each recepie to determine what pref_priority a recepie has
+    #TODO stretch goal a slider form for each recepie to determine what pref_priority a recepie has
         #Default to the recipe's current pref_priority
-    #TODO update preference button
+    #TODO stretch goal update preference button
 
     for recipe in recipes:
         ingredient_counter.update(recipe.ingredients)
-        print(recipe.queue_value)
 
     if request.method == 'POST':
         #a save (accept recipe list) button that updates queue_value
