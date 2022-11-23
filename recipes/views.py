@@ -27,7 +27,7 @@ def requeue(recipes):
         max_queue = recipes.aggregate(Max('queue_value')).get('queue_value__max')
 
         if max_queue == 0:
-            max_queue = 2
+            max_queue = 1
         
         print(recipe.title)
         print(recipe.preference_priority)
@@ -61,9 +61,9 @@ def home(request):
 
     ingredient_counter = Counter()
 
-    recipes = models.Recipe.objects.filter(queue_value__lte = 0)[:14]
+    recipes = models.Recipe.objects.filter(queue_value__lte = 0).exclude(preference_priority = 0)[:14]
     # '__lte' = less than or equal to
-    #TODO filter where pref_prio is not zero
+    #where pref_prio is not zero
     #[:14] get only 14 recipes
     #TODO if you can't get 14 recipes len(recipes) < 14, recipes= recipes + models.Recipe.objects.all()[:(14 - len(recipes))]
     #order by the queue value ascending
