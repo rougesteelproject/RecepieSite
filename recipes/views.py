@@ -7,8 +7,6 @@ from django.db.models import F, Max
 #You can't import to keep, but you can copy paste.
 # TODO stretch goal a javascript copy to clipboard button
 
-#TODO stretch goal replace Counter with the solution here: https://github.com/python/typeshed/issues/3438 and have 1.5 cups instead of 3x half-cups
-
 #TODO stretch goal have recepies be links to full instructions
 
 #TODO stretch goal fill in recipes with new ones from another site
