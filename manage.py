@@ -17,6 +17,7 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+#TODO alphabatize by ingedient, not by measure
 
 if __name__ == "__main__":
     main()
