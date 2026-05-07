@@ -6,8 +6,6 @@ Use localhost:8000/admin to add your own recipes. Note that currently, due to a 
 
 I made this software so that I could generate grocery lists without doing it by hand.
 
-[Software Demo Video](http://youtube.link.goes.here)
-
 # Web Pages
 
 The only web page is the home page, which shows you 14 recipes and the ingredients to make those recipes, including a master ingredient list at the bottom. The recipes are shown if they've made their wat to the bottom of the queue, which happens more frequently at higher 'priority_preference' values, up to once every two weeks at level 5.
