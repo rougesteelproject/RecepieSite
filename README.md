@@ -16,12 +16,6 @@ The only web page is the home page, which shows you 14 recipes and the ingredien
 
 This was developed in Django using VSCode.
 
-# Useful Websites
-
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
-
 # Future Work
 
 * Clicking on a recipe should show you the recipe.
